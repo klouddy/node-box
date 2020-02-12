@@ -1,0 +1,17 @@
+{
+  "prefix": "/actuator",
+  "info": {
+    "path": "/info",
+    "data": {
+      "info": "some kind of application",
+      "buildnum": "UNKNOWN",
+      "version": "UNKONWN"
+    }
+  },
+  "health": {
+    "path": "/health",
+    "data": {
+      "status": "up"
+    }
+  }
+}

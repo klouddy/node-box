@@ -8,11 +8,14 @@ jobs:
         - npm ci
       script:
         - tsc
-deploy:
-  provider: npm
-  email: klouddy@gmail.com
-  api_key:
-    secure: Htw7hI+uWnNNlh6Sc6wyjOv53fiZly/s1roFDnCWDZG0a8mHvadv4bIjA/MQ92y+dQy1XhCZlbqKfYBSsxd0ulcpNc4qZ4rsTp6mgABSvTInyZiK9qenyBmMGVCWX5ROa3pahIl267BxGQs2v00zDQ5OGbi6R2P3EP2J2+z0VbdTy3BLq5qOn24SuBnEEDqY/1tU75yQnCL10Tl27hQWSlbKVpiXAk9l31PDgEKeShczZmUrquin/jRseV1S3IpOfUSopZApXM6rC4yYu/maAJZdUmwrP+htn57rWPhY462jUcTwTzf9Gh4TnIz/Y5o43GJWHOvCQKi1WnCc2xZwSbVq/CC68VS20laKKx5pr7/h2b0QBtPrjVQ3HahA5sI2dDo5ulbjxZkMahYcU+2gHsEmMFK4CITWFGEzBnQz5ts/2dZPErlj/CM/O9CNtOF6uqnCnlAzsDVWEt3Pdv8ropWo8a5X+ATqSxD0dqaABvnwo9TZ4RUQ0OsevjlwYsbCHzdjLAnGSJ45c9da+ITOC/RUeOONhXjMuxnzY2poVE7XUvuAOYcLjaKQd3FMFgPO937zMlib7/wAI4wTn+mbf2QfZK3gQ+rYhTS9WARuzbtvagtsqxkkxixnQVHFTxULVeemqlB+bnZr3FscnR9u39jGGHf+UuwQXso4hXfi3Vo=
-  on:
-    repo: klouddy/node-box
-    tags: true
+    - stage: npm release
+      node_js: '12.13'
+      deploy:
+        provider: npm
+        email: klouddy@gmail.com
+        api_key:
+          secure: Htw7hI+uWnNNlh6Sc6wyjOv53fiZly/s1roFDnCWDZG0a8mHvadv4bIjA/MQ92y+dQy1XhCZlbqKfYBSsxd0ulcpNc4qZ4rsTp6mgABSvTInyZiK9qenyBmMGVCWX5ROa3pahIl267BxGQs2v00zDQ5OGbi6R2P3EP2J2+z0VbdTy3BLq5qOn24SuBnEEDqY/1tU75yQnCL10Tl27hQWSlbKVpiXAk9l31PDgEKeShczZmUrquin/jRseV1S3IpOfUSopZApXM6rC4yYu/maAJZdUmwrP+htn57rWPhY462jUcTwTzf9Gh4TnIz/Y5o43GJWHOvCQKi1WnCc2xZwSbVq/CC68VS20laKKx5pr7/h2b0QBtPrjVQ3HahA5sI2dDo5ulbjxZkMahYcU+2gHsEmMFK4CITWFGEzBnQz5ts/2dZPErlj/CM/O9CNtOF6uqnCnlAzsDVWEt3Pdv8ropWo8a5X+ATqSxD0dqaABvnwo9TZ4RUQ0OsevjlwYsbCHzdjLAnGSJ45c9da+ITOC/RUeOONhXjMuxnzY2poVE7XUvuAOYcLjaKQd3FMFgPO937zMlib7/wAI4wTn+mbf2QfZK3gQ+rYhTS9WARuzbtvagtsqxkkxixnQVHFTxULVeemqlB+bnZr3FscnR9u39jGGHf+UuwQXso4hXfi3Vo=
+        on:
+          repo: klouddy/node-box
+          tags: true
+

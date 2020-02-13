@@ -1,9 +1,0 @@
-{
-  "prefix": "/actuator",
-  "info": {
-    "path": "/info"
-  },
-  "health": {
-    "path": "/health"
-  }
-}

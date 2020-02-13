@@ -1,4 +1,5 @@
 # Node Box
+[![Build Status](https://travis-ci.com/klouddy/node-box.svg?branch=master)](https://travis-ci.com/klouddy/node-box.svg?branch=master)
 
 Quick way to create an express app for static html/js sites with some extra features.
 

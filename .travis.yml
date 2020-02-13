@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - "12.13"
+
+jobs:
+  include:
+    - stage: build
+      install:
+        - npm ci
+      script:
+        - tsc

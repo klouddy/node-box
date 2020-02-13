@@ -1,0 +1,28 @@
+actuator:
+  prefix: /actuator
+  paths:
+    info: /info
+    health: /health
+    metrics: /prometheus
+    logger: /logfile
+application:
+  name: Some name
+  buildnum: ${ENV}
+  version: ${GNTX_VERSION;UNKOWN}
+static:
+  path: /
+  src: ./public
+logger:
+  level: info
+  filename: app.log
+  postPath: /logger
+proxies:
+  - path: /api
+    target: http://localhost:8080
+    logLevel: info
+  - path: /api2
+    target: https://httpbin.org
+    logLevel: info
+
+
+

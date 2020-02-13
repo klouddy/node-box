@@ -9,5 +9,5 @@ export const LoggerLevels = {
 export interface LoggerConfig {
   filename?: string;
   level?: string;
-  path?: string;
+  postPath?: string;
 }

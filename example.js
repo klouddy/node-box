@@ -1,7 +1,7 @@
-const actuator = require('./dist/index.js');
+const nodeBox = require('./dist/index.js');
+var a = new nodeBox.NodeBox();
 
-var a = actuator();
-
-a.listen(3000, () => {
+a.logger.warn('logging warn message');
+a.app.listen(3000, () => {
   console.log('listening on 3000')
 });

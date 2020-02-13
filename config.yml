@@ -9,8 +9,11 @@ application:
   name: Some name
   buildnum: ${ENV}
   version: ${GNTX_VERSION;UNKOWN}
+static:
+  path: /
+  src: ./public
 logger:
-  level: warn
+  level: info
   filename: app.log
   postPath: /logger
 proxies:

@@ -9,13 +9,14 @@ import {LoggerSetup} from "./logging/logger-setup";
 import {ProxySetup} from "./proxy/proxy-setup";
 import * as helmet from 'helmet';
 import {LoggingController} from "./logging/logging-controller";
+import {ConfigInitData} from "./config/config-init-data";
 
 export class NodeBox {
   public app: Application;
   public logger: Logger;
 
-  constructor() {
-    let c = new ConfigLoader();
+  constructor(initData: ConfigInitData) {
+    let c = new ConfigLoader(initData);
     let loggerSetup = new LoggerSetup();
     this.logger = loggerSetup.log;
 
@@ -36,6 +37,8 @@ export class NodeBox {
       this.app.use(proxy.path, proxy.proxy);
     }
 
-
+    //setup static
+    this.logger.info(`Setting up static path ${c.config.staticConfig.path} -> ${c.config.staticConfig.src}`);
+    this.app.use(express.static(c.config.staticConfig.src));
   }
 }

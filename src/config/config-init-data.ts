@@ -1,3 +1,3 @@
 export interface ConfigInitData {
-  file: string;
+  filename: string;
 }

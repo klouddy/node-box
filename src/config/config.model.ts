@@ -5,6 +5,7 @@ import {safeLoad} from 'js-yaml';
 import {readFileSync} from "fs";
 import {ProxyConfig} from "./proxy-config.model";
 import {EnvConverter} from "./env-converter";
+import {StaticConfig} from "./static-config.model";
 
 const actuatorDefault: ActuatorConfig = {
   prefix: 'actuator',
@@ -26,10 +27,16 @@ const applicationDefault = {
   name: "Default application name",
 };
 
+const staticConfigDefault: StaticConfig = {
+  path: '/',
+  src: './public'
+};
+
 
 export class Config {
   public actuator: ActuatorConfig;
   public logger: LoggerConfig;
+  public staticConfig: StaticConfig;
   public application: any;
   public proxies: ProxyConfig[] = [];
 
@@ -39,9 +46,10 @@ export class Config {
     this.actuator = actuatorDefault;
     this.logger = loggerConfigDefault;
     this.application = applicationDefault;
+    this.staticConfig = staticConfigDefault;
 
-    if (initData && initData.file && initData.file.length > 0) {
-      let configObj = this.loadYamlConfig(initData.file);
+    if (initData && initData.filename && initData.filename.length > 0) {
+      let configObj = this.loadYamlConfig(initData.filename);
       let envConverter = new EnvConverter(configObj);
 
       if (envConverter.convertedObject) {
@@ -60,6 +68,10 @@ export class Config {
 
       if (configObj && configObj.proxies) {
         this.proxies = configObj.proxies;
+      }
+
+      if (configObj && configObj.static) {
+        this.staticConfig = configObj.static;
       }
 
     }

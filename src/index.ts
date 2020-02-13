@@ -10,6 +10,7 @@ import {ProxySetup} from "./proxy/proxy-setup";
 import * as helmet from 'helmet';
 import {LoggingController} from "./logging/logging-controller";
 import {ConfigInitData} from "./config/config-init-data";
+import {join} from 'path';
 
 export class NodeBox {
   public app: Application;
@@ -40,5 +41,8 @@ export class NodeBox {
     //setup static
     this.logger.info(`Setting up static path ${c.config.staticConfig.path} -> ${c.config.staticConfig.src}`);
     this.app.use(express.static(c.config.staticConfig.src));
+    this.app.all('/*', (req, res, next) => {
+      res.sendFile(join(__dirname, '..', c.config.staticConfig.src, 'index.html'));
+    });
   }
 }
